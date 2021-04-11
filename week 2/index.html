@@ -45,31 +45,36 @@
                 'title':'Osaka',
                 'lat': 34.6937,
                 'lon': 135.5023,
-                'description':'Where Kai went on vaction in 2019'
+                'description':'Where Kai went on vaction in 2019',
+                'url':'https://www.travelanddestinations.com/wp-content/uploads/2019/01/Osaka-Japan-at-night.jpg'
             },
             {
                 'title':'Athens',
                 'lat': 37.98,
                 'lon': 23.73,
-                'description':'Where Kai went on vacation in 2016'
+                'description':'Where Kai went on vacation in 2016',
+                'url':'https://cdn.kimkim.com/files/a/content_articles/featured_photos/966186754ba5c3ac23be2e15be87f77cf2e4d3ff/big-40bc097a10e33f8abf09e79dc84575a7.jpg'
             },
             {
                 'title':'Rome',
                 'lat': 41.89,
                 'lon': 12.48,
-                'description':'Where Kai was born'
+                'description':'Where Kai was born',
+                'url':'https://i.natgeofe.com/n/3012ffcc-7361-45f6-98b3-a36d4153f660/colosseum-daylight-rome-italy.jpg'
             },
             {
                 'title':'Tokyo',
                 'lat': 35.6762,
                 'lon': 139.6503,
-                'description':'Where Kai\'s relatives live'
+                'description':'Where Kai\'s relatives live',
+                'url':'https://savvytokyo.scdn3.secure.raxcdn.com/app/uploads/2017/06/iStock-625268272-e1498458014163-790x445.jpg'
             },
             {
                 'title':'Vancouver',
                 'lat': 49.29023385882413,
                 'lon': -123.11753840062593,
-                'description':'Where Kai went on vacation in 2003'
+                'description':'Where Kai went on vacation in 2003',
+                'url':'http://res.cloudinary.com/simpleview/image/upload/v1486505969/clients/vancouverbc/Aerial_Sunset_Vancouver_d3_copy_1bb86ed0-1edc-4cda-841d-0b033ca0bb72.jpg'
             }
         ]
         let map = L.map('map').setView([data[0].lat,data[0].lon], 17);
@@ -78,9 +83,14 @@
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
+            
+            let popup = L.popup().setContent(
+                '<h2>'+item.title+'</h2>'+item.description
+                + "<br> <img src = '"+ item.url +"' width = '100%'>"
+            );
 
             let marker = L.marker([item.lat,item.lon]).addTo(map)
-                    .bindPopup(item.title+': '+item.description)
+                    .bindPopup(popup)
                     .openPopup();	
             console.log(item);
 
