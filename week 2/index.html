@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Places Kai has visited</title>
+	<meta charset="utf-8" />
+
+	<!-- style sheets -->
+	<link rel="stylesheet" href="css/style.css">
+
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+	<div class="header">
+		Places Kai has visited
+	</div>
+	<div class="sidebar">
+		Here is a list of 5 places Kai has visted throughout his life.
+        <ol>
+            <li>
+                Osaka
+            </li>
+            <li>
+                Athens
+            </li>
+            <li>
+                Rome
+            </li>
+            <li>
+                Tokyo
+            </li>
+            <li>
+                Vancouver
+            </li>
+        </ol>
+	</div>
+	<div class="content">
+		My Map
+        <div id="map"></div>
+	</div>
+    <script>
+        let data = [
+            {
+                'title':'Osaka',
+                'lat': 34.6937,
+                'lon': 135.5023,
+                'description':'Where Kai went on vaction in 2019'
+            },
+            {
+                'title':'Athens',
+                'lat': 37.98,
+                'lon': 23.73,
+                'description':'Where Kai went on vacation in 2016'
+            },
+            {
+                'title':'Rome',
+                'lat': 41.89,
+                'lon': 12.48,
+                'description':'Where Kai was born'
+            },
+            {
+                'title':'Tokyo',
+                'lat': 35.6762,
+                'lon': 139.6503,
+                'description':'Where Kai\'s relatives live'
+            },
+            {
+                'title':'Vancouver',
+                'lat': 49.29023385882413,
+                'lon': -123.11753840062593,
+                'description':'Where Kai went on vacation in 2003'
+            }
+        ]
+        let map = L.map('map').setView([data[0].lat,data[0].lon], 17);
+        data.forEach(function(item){
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            let marker = L.marker([item.lat,item.lon]).addTo(map)
+                    .bindPopup(item.title+': '+item.description)
+                    .openPopup();	
+            console.log(item);
+
+        });
+    </script>
+</body>
+</html>
