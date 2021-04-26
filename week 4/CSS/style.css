@@ -2,6 +2,10 @@ body,html {
 	margin:0;
 	height:100%;
 	width:100%;
+	font-family: PT sans;
+	src: url(https://fonts.google.com/share?selection.family=PT%20Sans);
+	color: white;
+	text-align: center;
 }
 
 #map {
@@ -11,11 +15,11 @@ body,html {
 body {
 	display: grid;
 	grid-template-rows: 80px 1fr 50px;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 20% 80%;
 	grid-template-areas: 
-	"header header"
-	"sidebar content"
-	"footer footer";
+	"header header header"
+	"sidebar content content"
+	"footer footer footer";
 }
 
 .header {
@@ -32,6 +36,27 @@ body {
 	padding:10px;
 	background-color: #555;
 	overflow: auto;
+}
+
+.sidebarcontainer{
+	display: grid;
+	padding:10px;
+	grid-template-rows: 90%;
+	grid-template-columns: auto;
+	grid-template-areas:
+	"footingbarcontainer";
+}
+
+.sidebartitle{
+	padding:10px;
+	background-color: rgb(255, 255, 255);
+	border: 2px solid rgb(22, 22, 22);
+	border-radius: 5px;
+	color: black;
+}
+
+.sidebartitle:hover{
+	background-color: rgb(217, 252, 255);
 }
 
 .content {
