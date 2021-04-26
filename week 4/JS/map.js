@@ -1,3 +1,5 @@
+const request = new XMLHttpRequest();
+
 // Global variables
 let map;
 let lat = 0;
