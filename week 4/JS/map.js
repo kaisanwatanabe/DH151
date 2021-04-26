@@ -7,7 +7,7 @@ let zl = 3;
 
 
 // path to csv data
-let path = "CSV/query2015_2017.csv";
+let path = "data/query2015_2017.csv";
 // global variables
 let markers = L.featureGroup();
 
